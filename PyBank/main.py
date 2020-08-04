@@ -36,9 +36,9 @@ with open(file_path, "r") as csvFile:
 print("Financial Analysis\n\nTotal Months: " + f'{sum_month}')
 #print total profit/loss
 print("Total: " + f'${final_pltotal}'.rstrip('.0'))
-print(f'${avg_change}')
+print("Average Change: " + f'${round(avg_change, 2)}')
 #---------------------------------------------------------------------------
 #set file pate using write mode
 with open(output_file, 'w') as txtFile:
     #output results to .txt file
-    txtFile.write("Financial Analysis\n---------------------------------\nTotal Months: "+ f'{sum_month}'"\nTotal: " + f'${final_pltotal}'.rstrip('.0'))
+    txtFile.write("Financial Analysis\n---------------------------------\nTotal Months: "+ f'{sum_month}'"\nTotal: " + f'${final_pltotal}'.rstrip('.0') + "\nAverage Change: " + f'${round(avg_change, 2)}')
