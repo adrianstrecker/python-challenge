@@ -19,12 +19,19 @@ with open(file_path, "r") as csvFile:
     #create variable for total profit/loss
     pltotal = []
     for row in data:
-        tot_prof = row[1]
-        pltotal.append(tot_prof)
-    pltotal2 = [float(integral) for integral in pltotal]
-    final_pltotal = sum(pltotal2)
+        pltotal.append(float(row[1]))
+    final_pltotal = sum(pltotal)
+    #final_pltotal = sum(pltotal2)
     #create variables for monthly change
-    avg_change = sum(pltotal2) / len(pltotal2)
+    monthly_change = []
+    previous_month = 0.00
+    current_month = 0.00
+    for i in range(1,len(pltotal)):
+        monthly_change.append(pltotal[i] - pltotal[i-1])
+        avg_change = sum(monthly_change)/len(monthly_change)
+    #for row in data:
+        #avg_change = row[1]
+        #monthly_change.append(current_month - previous_month)
 #print total months
 print("Financial Analysis\n\nTotal Months: " + f'{sum_month}')
 #print total profit/loss
