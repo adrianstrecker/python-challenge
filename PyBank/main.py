@@ -1,11 +1,12 @@
 #import modules
 import os
 import csv
+import statistics
 
 #output results to txt file
 output_file = os.path.join ('Analysis', 'budget_results.txt')
     
-#csv file path
+#set csv file path being read
 file_path = os.path.join ('Resources', 'budget_data.csv')
 with open(file_path, "r") as csvFile:
 #Create csv reader
@@ -16,21 +17,20 @@ with open(file_path, "r") as csvFile:
     data = list(csv_reader)
     sum_month = len(data)
     #create variable for total profit/loss
-    #profit_loss_total = 0
     pltotal = []
     for row in data:
         tot_prof = row[1]
         pltotal.append(tot_prof)
     pltotal2 = [float(integral) for integral in pltotal]
     final_pltotal = sum(pltotal2)
+    #create variables for monthly change
+    monthly_change = []
 #print total months
 print("Financial Analysis\n\nTotal Months: " + f'{sum_month}')
-print("Total: " + f'{final_pltotal}'.rstrip('.0'))
+#print total profit/loss
+print("Total: " + f'${final_pltotal}'.rstrip('.0'))
 #---------------------------------------------------------------------------
 #set file pate using write mode
 with open(output_file, 'w') as txtFile:
-    #write total months life]
-    #txtFile.write("Financial Analysis")
-    txtFile.write("Financial Analysis\n---------------------------------\nTotal Months: "+ f'{sum_month}'"\nTotal: " + f'{final_pltotal}'.rstrip('.0'))
-    #write total profit/loss
-    #txtFile.write("Total: " + f'{final_pltotal}'.rstrip('.0'))
+    #output results to .txt file
+    txtFile.write("Financial Analysis\n---------------------------------\nTotal Months: "+ f'{sum_month}'"\nTotal: " + f'${final_pltotal}'.rstrip('.0'))
