@@ -24,11 +24,12 @@ with open(file_path, "r") as csvFile:
     pltotal2 = [float(integral) for integral in pltotal]
     final_pltotal = sum(pltotal2)
     #create variables for monthly change
-    monthly_change = []
+    avg_change = sum(pltotal2) / len(pltotal2)
 #print total months
 print("Financial Analysis\n\nTotal Months: " + f'{sum_month}')
 #print total profit/loss
 print("Total: " + f'${final_pltotal}'.rstrip('.0'))
+print(f'${avg_change}')
 #---------------------------------------------------------------------------
 #set file pate using write mode
 with open(output_file, 'w') as txtFile:
