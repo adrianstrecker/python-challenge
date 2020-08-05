@@ -21,7 +21,7 @@ with open(file_path, "r") as csvFile:
         votes.append(row[1])
         #date.append(row[0])
     total_votes = len(votes)
-    print(total_votes)
+    print("Election Results"+ "\n-------------------------------"+ "\nTotal Votes: " + f'{total_votes}')
 # candidateList = {candidate: votes}
 #open CSV for read
 #csv_file_object.next()

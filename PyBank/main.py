@@ -39,12 +39,16 @@ with open(file_path, "r") as csvFile:
         greatest_decrease_date = str(date[monthly_change.index(min(monthly_change))+1])
         #create greatest decrease
         greatest_decrease = min(monthly_change)
-#print total months
+#print header & total months
 print("Financial Analysis\n\nTotal Months: " + f'{sum_month}')
+print("---------------------------------")
 #print total profit/loss
 print("Total: " + f'${round(final_pltotal)}')
+#print average change
 print("Average Change: " + f'${round(avg_change, 2)}')
+#print greatest increase
 print("Greatest Increase in Profits: " + f'{greatest_date}',"(",(f'${round(greatest_increase)}'),")")
+#print greatest decrease
 print("Greatest Decrease in Profits: " + f'{greatest_decrease_date}',"(",(f'${round(greatest_decrease)}'),")")
 #---------------------------------------------------------------------------
 #set file pate using write mode
