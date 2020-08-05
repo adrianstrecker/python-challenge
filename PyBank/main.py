@@ -13,6 +13,7 @@ with open(file_path, "r") as csvFile:
     #remove header
     next(csv_reader)
     #create variables for sum of month
+    #https://stackoverflow.com/questions/27504056/row-count-in-a-csv-file
     data = list(csv_reader)
     sum_month = len(data)
     #create variable for total profit/loss
@@ -24,12 +25,16 @@ with open(file_path, "r") as csvFile:
     final_pltotal = sum(pltotal)
     #create variables for monthly change
     monthly_change = []
-    for i in range(1,len(pltotal)):
-        monthly_change.append(pltotal[i] - pltotal[i-1])
+    #https://stackoverflow.com/questions/46965192/python-how-can-i-find-difference-between-two-rows-of-same-column-using-loop-in
+    #modified placement of code referenced and changed positioning of an item as needed for my own code to work
+    for row in range(1,len(pltotal)):
+        monthly_change.append(pltotal[row] - pltotal[row-1])
         avg_change = sum(monthly_change)/len(monthly_change)
         #create greatest increase
         greatest_increase = max(monthly_change)
+        #reference date that matches greatest increase - modified from site referenced on line 28
         greatest_date = str(date[monthly_change.index(max(monthly_change))+1])
+        #reference date that matches greatest decrease - modified from site referenced on line 28
         greatest_decrease_date = str(date[monthly_change.index(min(monthly_change))+1])
         #create greatest decrease
         greatest_decrease = min(monthly_change)
