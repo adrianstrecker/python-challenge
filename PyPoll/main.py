@@ -36,17 +36,22 @@ with open(file_path, "r") as csvFile:
         else:
          candidate_o.append(row)
          candidate_o_total = len(candidate_o)
-        
+    #create variables for percentage of each candidate
+    k_percentage = (candidate_k_total)/(total_votes)
+    c_percentage = (candidate_c_total)/(total_votes)
+    l_percentage = (candidate_l_total)/(total_votes)
+    o_percentage = (candidate_o_total)/(total_votes)
+#print results
 print("Election Results"+ "\n-------------------------------"+ "\nTotal Votes: " + f'{total_votes}')
 print("-------------------------------")
 #print Khan total
-print("Khan: " + f'{candidate_k_total}')
+print("Khan: " + "{:.0%}".format(k_percentage) + " " + "(" + f'{candidate_k_total}' + ")")
 #print Correy total
-print("Correy: " + f'{candidate_c_total}')
+print("Correy: " + "{:.0%}".format(c_percentage) + " " + "(" + f'{candidate_c_total}' + ")")
 #print Li total
-print("Li: " + f'{candidate_l_total}')
+print("Li: " + "{:.0%}".format(l_percentage) + " " + "(" + f'{candidate_l_total}' + ")")
 #print O'Tooley total
-print("O'Tooley: " + f'{candidate_o_total}')
+print("O'Tooley: " + "{:.0%}".format(o_percentage) + " " + "(" + f'{candidate_o_total}' + ")")
 # candidateList = {candidate: votes}
 #for each row
 #if candidateList.index(current row candidate) <1 
