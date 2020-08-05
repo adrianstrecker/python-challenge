@@ -1,7 +1,6 @@
 #import modules
 import os
 import csv
-import statistics
 
 #output results to txt file
 output_file = os.path.join ('Analysis', 'budget_results.txt')
@@ -37,12 +36,12 @@ with open(file_path, "r") as csvFile:
 #print total months
 print("Financial Analysis\n\nTotal Months: " + f'{sum_month}')
 #print total profit/loss
-print("Total: " + f'${final_pltotal}'.rstrip('.0'))
+print("Total: " + f'${round(final_pltotal)}')
 print("Average Change: " + f'${round(avg_change, 2)}')
-print("Greatest Increase in Profits: " + f'{greatest_date}',(f'${greatest_increase}'.rstrip('.0')))
-print("Greatest Decrease in Profits: " + f'{greatest_decrease_date}', (f'${greatest_decrease}'.rstrip('.0')))
+print("Greatest Increase in Profits: " + f'{greatest_date}',"(",(f'${round(greatest_increase)}'),")")
+print("Greatest Decrease in Profits: " + f'{greatest_decrease_date}',"(",(f'${round(greatest_decrease)}'),")")
 #---------------------------------------------------------------------------
 #set file pate using write mode
 with open(output_file, 'w') as txtFile:
     #output results to .txt file
-    txtFile.write("Financial Analysis\n---------------------------------\nTotal Months: "+ f'{sum_month}'"\nTotal: " + f'${final_pltotal}'.rstrip('.0') + "\nAverage Change: " + f'${round(avg_change, 2)}' + "\nGreatest Increase in Profits: "+ f'{greatest_date}'+ " (" + (f'${greatest_increase}'.rstrip('.0')) + ")" + "\nGreatest Decrease in Profits: "+ f'{greatest_decrease_date}'+ " (" + (f'${greatest_decrease}'.rstrip('.0')) + ")")
+    txtFile.write("Financial Analysis\n---------------------------------\nTotal Months: "+ f'{sum_month}'"\nTotal: " + f'${round(final_pltotal)}' + "\nAverage Change: " + f'${round(avg_change, 2)}' + "\nGreatest Increase in Profits: "+ f'{greatest_date}'+ " (" + (f'${round(greatest_increase)}') + ")" + "\nGreatest Decrease in Profits: "+ f'{greatest_decrease_date}'+ " (" + (f'${round(greatest_decrease)}') + ")")
