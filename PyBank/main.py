@@ -17,26 +17,29 @@ with open(file_path, "r") as csvFile:
     data = list(csv_reader)
     sum_month = len(data)
     #create variable for total profit/loss
-    pltotal = []
-    date = []
+    final_pltotal = 0
     for row in data:
-        pltotal.append(float(row[1]))
-        date.append(row[0])
-    final_pltotal = sum(pltotal)
-    #create variables for monthly change
-    monthly_change = []
+        final_pltotal += int(row[1])
+    #create variables for monthly change and matching date
     #https://stackoverflow.com/questions/46965192/python-how-can-i-find-difference-between-two-rows-of-same-column-using-loop-in
-    for row in range(1,len(pltotal)):
-        monthly_change.append(pltotal[row] - pltotal[row-1])
+    monthly = []
+    date = []
+    monthly_change = []
+    for row in data:
+        monthly.append(float(row[1]))
+        date.append(row[0])
+
+    for row in range(1,len(data)):
+        monthly_change.append(monthly[row] - monthly[row-1])
         avg_change = sum(monthly_change)/len(monthly_change)
-        #create greatest increase
-        greatest_increase = max(monthly_change)
         #reference date that matches greatest increase - modified from site referenced on line 28
         greatest_date = str(date[monthly_change.index(max(monthly_change))+1])
-        #create greatest decrease
-        greatest_decrease = min(monthly_change)
         #reference date that matches greatest decrease - modified from site referenced on line 28
         greatest_decrease_date = str(date[monthly_change.index(min(monthly_change))+1])
+        #create greatest increase
+        greatest_increase = max(monthly_change)
+        #create greatest decrease
+        greatest_decrease = min(monthly_change)
 #print header & total months
 print("Financial Analysis\n\nTotal Months: " + f'{sum_month}')
 print("---------------------------------")
