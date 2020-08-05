@@ -27,6 +27,7 @@ with open(file_path, "r") as csvFile:
     monthly_change = []
     #https://stackoverflow.com/questions/46965192/python-how-can-i-find-difference-between-two-rows-of-same-column-using-loop-in
     #modified placement of code referenced and changed positioning of an item as needed for my own code to work
+    #exampl of changing positioning is lines 23 and 24
     for row in range(1,len(pltotal)):
         monthly_change.append(pltotal[row] - pltotal[row-1])
         avg_change = sum(monthly_change)/len(monthly_change)
