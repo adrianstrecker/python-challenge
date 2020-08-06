@@ -1,6 +1,7 @@
 #import modules
 import os
 import csv
+from collections import Counter
 
 #output results to txt file
 output_file = os.path.join ('Analysis', 'election_results.txt')
@@ -41,6 +42,15 @@ with open(file_path, "r") as csvFile:
     c_percentage = (candidate_c_total)/(total_votes)
     l_percentage = (candidate_l_total)/(total_votes)
     o_percentage = (candidate_o_total)/(total_votes)
+#---------------------------------------------------------------
+#create candidate list to find winner
+#----------------------------------------------------------------
+    candidate_list = [candidate_k, candidate_c, candidate_l, candidate_o]
+    candidate_list_total = [candidate_k_total, candidate_c_total, candidate_l_total, candidate_o_total]
+    winner = max(candidate_list_total)
+    winner_name = str(candidate_list.index[max(candidate_list_total)])
+    print(winner_name)  
+
 #print results
 print("Election Results"+ "\n-------------------------------"+ "\nTotal Votes: " + f'{total_votes}')
 print("-------------------------------")
@@ -52,17 +62,9 @@ print("Correy: " + "{:.0%}".format(c_percentage) + " " + "(" + f'{candidate_c_to
 print("Li: " + "{:.0%}".format(l_percentage) + " " + "(" + f'{candidate_l_total}' + ")")
 #print O'Tooley total
 print("O'Tooley: " + "{:.0%}".format(o_percentage) + " " + "(" + f'{candidate_o_total}' + ")")
-# candidateList = {candidate: votes}
-#for each row
-#if candidateList.index(current row candidate) <1 
-	#then append dict to list and set votes = 0
-#increase vote for candidate + 1
-#exit for loop
-#create temp variables
-#for candidate in list
-	#find one with most votes ( accumulator? )
-	#calc and print percentage
-#print outPut
+print("-------------------------------")
+
+#print output
 with open(output_file, 'w') as txtFile:
     #output results to .txt file
-    txtFile.write("Election Results"+ "\n-------------------------------"+ "\nTotal Votes: " + f'{total_votes}')	
+    txtFile.write("Election Results"+ "\n-------------------------------"+ "\nTotal Votes: " + f'{total_votes}' + "\n-------------------------------" + "\nKhan: " + "{:.0%}".format(k_percentage) + " " + "(" + f'{candidate_k_total}' + ")" + "\nCorrey: " + "{:.0%}".format(c_percentage) + " " + "(" + f'{candidate_c_total}' + ")" + "\nLi: " + "{:.0%}".format(l_percentage) + " " + "(" + f'{candidate_l_total}' + ")" + "\nO'Tooley: " + "{:.0%}".format(o_percentage) + " " + "(" + f'{candidate_o_total}' + ")" + "\n-------------------------------")
