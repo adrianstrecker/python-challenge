@@ -1,7 +1,7 @@
 #import modules
 import os
 import csv
-from collections import Counter
+from statistics import mode
 
 #output results to txt file
 output_file = os.path.join ('Analysis', 'election_results.txt')
@@ -24,6 +24,9 @@ with open(file_path, "r") as csvFile:
     candidate_l = []
     #Candidate O'Tooley
     candidate_o = []
+
+    #candidate_list = []
+    candidate_list_total = []
     for row in csv_reader:
         if row['Candidate'] == 'Khan':
          candidate_k.append(row)
@@ -46,10 +49,11 @@ with open(file_path, "r") as csvFile:
 #create candidate list to find winner
 #----------------------------------------------------------------
     candidate_list = [candidate_k, candidate_c, candidate_l, candidate_o]
-    candidate_list_total = [candidate_k_total, candidate_c_total, candidate_l_total, candidate_o_total]
-    winner = max(candidate_list_total)
-    winner_name = str(candidate_list.index[max(candidate_list_total)])
-    print(winner_name)  
+    #candidate_list_total = [candidate_k_total, candidate_c_total, candidate_l_total, candidate_o_total]
+    #winner = [word for word, word_count in Counter(csv_reader).most_common(1)]
+    candidate_list = list(file_path)
+    winner = str(mode(candidate_list))
+    print(winner)
 
 #print results
 print("Election Results"+ "\n-------------------------------"+ "\nTotal Votes: " + f'{total_votes}')
