@@ -1,7 +1,7 @@
 #import modules
 import os
 import csv
-from statistics import mode
+from collections import Counter
 
 #output results to txt file
 output_file = os.path.join ('Analysis', 'election_results.txt')
@@ -45,16 +45,26 @@ with open(file_path, "r") as csvFile:
     c_percentage = (candidate_c_total)/(total_votes)
     l_percentage = (candidate_l_total)/(total_votes)
     o_percentage = (candidate_o_total)/(total_votes)
-#---------------------------------------------------------------
-#create candidate list to find winner
-#----------------------------------------------------------------
-    candidate_list = [candidate_k, candidate_c, candidate_l, candidate_o]
-    #candidate_list_total = [candidate_k_total, candidate_c_total, candidate_l_total, candidate_o_total]
-    #winner = [word for word, word_count in Counter(csv_reader).most_common(1)]
-    candidate_list = list(file_path)
-    winner = str(mode(candidate_list))
-    print(winner)
 
+    candidate_list = []
+    candidate_votes = []
+    votes = []
+    for row in csv_reader:
+        if candidate_list.index(row['Candidate']) < 0 :
+            candidate_list.append(row['Candidate'])
+            candidate_votes.append(1)
+            candidate_list = 0 
+        else:
+            candidate_votes[candidate_list.index(row['Candidate'])] += 1  
+    
+    #find winner
+    for row in csv_reader:
+        votes.append(candidate_list[row['Candidate']])
+        winner = str(candidate_votes[votes.index(max(votes))])
+
+        print(winner)
+
+    
 #print results
 print("Election Results"+ "\n-------------------------------"+ "\nTotal Votes: " + f'{total_votes}')
 print("-------------------------------")
