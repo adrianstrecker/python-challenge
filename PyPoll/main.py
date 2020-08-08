@@ -46,25 +46,18 @@ with open(file_path, "r") as csvFile:
     l_percentage = (candidate_l_total)/(total_votes)
     o_percentage = (candidate_o_total)/(total_votes)
 
-    candidate_list = []
-    candidate_votes = []
-    votes = []
-    for row in csv_reader:
-        if candidate_list.index(row['Candidate']) < 0 :
-            candidate_list.append(row['Candidate'])
-            candidate_votes.append(1)
-            candidate_list = 0 
-        else:
-            candidate_votes[candidate_list.index(row['Candidate'])] += 1  
-    
-    #find winner
-    for row in csv_reader:
-        votes.append(candidate_list[row['Candidate']])
-        winner = str(candidate_votes[votes.index(max(votes))])
+    #find winner - assistance from Sandhya Kumari
+    winner = max (candidate_k_total,candidate_c_total,candidate_l_total,candidate_o_total)
+   
+    if winner == candidate_k_total:
+        winner_is = "Khan"
+    elif winner == candidate_c_total:
+        winner_is = "Correy"
+    elif winner == candidate_l_total:
+        winner_is = "Li"
+    elif winner == candidate_o_total:
+        winner_is = "O'Tooley"
 
-        print(winner)
-
-    
 #print results
 print("Election Results"+ "\n-------------------------------"+ "\nTotal Votes: " + f'{total_votes}')
 print("-------------------------------")
@@ -77,8 +70,9 @@ print("Li: " + "{:.0%}".format(l_percentage) + " " + "(" + f'{candidate_l_total}
 #print O'Tooley total
 print("O'Tooley: " + "{:.0%}".format(o_percentage) + " " + "(" + f'{candidate_o_total}' + ")")
 print("-------------------------------")
-
+print("Winner: " + f'{winner_is}')
+print("-------------------------------")
 #print output
 with open(output_file, 'w') as txtFile:
     #output results to .txt file
-    txtFile.write("Election Results"+ "\n-------------------------------"+ "\nTotal Votes: " + f'{total_votes}' + "\n-------------------------------" + "\nKhan: " + "{:.0%}".format(k_percentage) + " " + "(" + f'{candidate_k_total}' + ")" + "\nCorrey: " + "{:.0%}".format(c_percentage) + " " + "(" + f'{candidate_c_total}' + ")" + "\nLi: " + "{:.0%}".format(l_percentage) + " " + "(" + f'{candidate_l_total}' + ")" + "\nO'Tooley: " + "{:.0%}".format(o_percentage) + " " + "(" + f'{candidate_o_total}' + ")" + "\n-------------------------------")
+    txtFile.write("Election Results"+ "\n-------------------------------"+ "\nTotal Votes: " + f'{total_votes}' + "\n-------------------------------" + "\nKhan: " + "{:.0%}".format(k_percentage) + " " + "(" + f'{candidate_k_total}' + ")" + "\nCorrey: " + "{:.0%}".format(c_percentage) + " " + "(" + f'{candidate_c_total}' + ")" + "\nLi: " + "{:.0%}".format(l_percentage) + " " + "(" + f'{candidate_l_total}' + ")" + "\nO'Tooley: " + "{:.0%}".format(o_percentage) + " " + "(" + f'{candidate_o_total}' + ")" + "\n-------------------------------" + "\nWinner: " + f'{winner_is}' + "\n-------------------------------")
