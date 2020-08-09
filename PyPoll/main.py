@@ -59,20 +59,20 @@ with open(file_path, "r") as csvFile:
         winner_is = "O'Tooley"
 
 #print results
-print("Election Results"+ "\n-------------------------------"+ "\nTotal Votes: " + f'{total_votes}')
+print("Election Results"+ "\n-------------------------------"+ "\nTotal Votes: " + f'{total_votes:,}')
 print("-------------------------------")
 #print Khan total
-print("Khan: " + "{:.0%}".format(k_percentage) + " " + "(" + f'{candidate_k_total}' + ")")
+print("Khan: " + "{:.0%}".format(k_percentage) + " " + "(" + f'{candidate_k_total:,}' + ")")
 #print Correy total
-print("Correy: " + "{:.0%}".format(c_percentage) + " " + "(" + f'{candidate_c_total}' + ")")
+print("Correy: " + "{:.0%}".format(c_percentage) + " " + "(" + f'{candidate_c_total:,}' + ")")
 #print Li total
-print("Li: " + "{:.0%}".format(l_percentage) + " " + "(" + f'{candidate_l_total}' + ")")
+print("Li: " + "{:.0%}".format(l_percentage) + " " + "(" + f'{candidate_l_total:,}' + ")")
 #print O'Tooley total
-print("O'Tooley: " + "{:.0%}".format(o_percentage) + " " + "(" + f'{candidate_o_total}' + ")")
+print("O'Tooley: " + "{:.0%}".format(o_percentage) + " " + "(" + f'{candidate_o_total:,}' + ")")
 print("-------------------------------")
 print("Winner: " + f'{winner_is}')
 print("-------------------------------")
 #print output
 with open(output_file, 'w') as txtFile:
     #output results to .txt file
-    txtFile.write("Election Results"+ "\n-------------------------------"+ "\nTotal Votes: " + f'{total_votes}' + "\n-------------------------------" + "\nKhan: " + "{:.0%}".format(k_percentage) + " " + "(" + f'{candidate_k_total}' + ")" + "\nCorrey: " + "{:.0%}".format(c_percentage) + " " + "(" + f'{candidate_c_total}' + ")" + "\nLi: " + "{:.0%}".format(l_percentage) + " " + "(" + f'{candidate_l_total}' + ")" + "\nO'Tooley: " + "{:.0%}".format(o_percentage) + " " + "(" + f'{candidate_o_total}' + ")" + "\n-------------------------------" + "\nWinner: " + f'{winner_is}' + "\n-------------------------------")
+    txtFile.write("Election Results"+ "\n-------------------------------"+ "\nTotal Votes: " + f'{total_votes:,}' + "\n-------------------------------" + "\nKhan: " + "{:.0%}".format(k_percentage) + " " + "(" + f'{candidate_k_total:,}' + ")" + "\nCorrey: " + "{:.0%}".format(c_percentage) + " " + "(" + f'{candidate_c_total:,}' + ")" + "\nLi: " + "{:.0%}".format(l_percentage) + " " + "(" + f'{candidate_l_total:,}' + ")" + "\nO'Tooley: " + "{:.0%}".format(o_percentage) + " " + "(" + f'{candidate_o_total:,}' + ")" + "\n-------------------------------" + "\nWinner: " + f'{winner_is}' + "\n-------------------------------")
