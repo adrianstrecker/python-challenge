@@ -26,7 +26,7 @@ with open(file_path, "r") as csvFile:
     date = []
     monthly_change = []
     for row in data:
-        monthly.append(float(row[1]))
+        monthly.append(int(row[1]))
         date.append(row[0])
 
     for row in range(1,len(data)):
@@ -41,18 +41,18 @@ with open(file_path, "r") as csvFile:
         #create greatest decrease
         greatest_decrease = min(monthly_change)
 #print header & total months
-print("Financial Analysis\n\nTotal Months: " + f'{sum_month}')
+print("Financial Analysis" + "\n---------------------------------" + "\nTotal Months: " + f'{sum_month}')
 print("---------------------------------")
 #print total profit/loss
-print("Total: " + f'${round(final_pltotal)}')
+print("Total: " + f'${final_pltotal:,}')
 #print average change
-print("Average Change: " + f'${round(avg_change, 2)}')
+print("Average Change: " + f'${round(avg_change, 2):,}')
 #print greatest increase
-print("Greatest Increase in Profits: " + f'{greatest_date}',"(",(f'${round(greatest_increase)}'),")")
+print("Greatest Increase in Profits: " + f'{greatest_date}',"(",(f'${greatest_increase:,}'),")")
 #print greatest decrease
-print("Greatest Decrease in Profits: " + f'{greatest_decrease_date}',"(",(f'${round(greatest_decrease)}'),")")
+print("Greatest Decrease in Profits: " + f'{greatest_decrease_date}',"(",(f'${greatest_decrease:,}'),")")
 #---------------------------------------------------------------------------
 #set file pate using write mode
 with open(output_file, 'w') as txtFile:
     #output results to .txt file
-    txtFile.write("Financial Analysis\n---------------------------------\nTotal Months: "+ f'{sum_month}'"\nTotal: " + f'${round(final_pltotal)}' + "\nAverage Change: " + f'${round(avg_change, 2)}' + "\nGreatest Increase in Profits: "+ f'{greatest_date}'+ " (" + (f'${round(greatest_increase)}') + ")" + "\nGreatest Decrease in Profits: "+ f'{greatest_decrease_date}'+ " (" + (f'${round(greatest_decrease)}') + ")")
+    txtFile.write("Financial Analysis\n---------------------------------\nTotal Months: "+ f'{sum_month}'"\nTotal: " + f'${final_pltotal:,}' + "\nAverage Change: " + f'${avg_change:,}' + "\nGreatest Increase in Profits: "+ f'{greatest_date}'+ " (" + (f'${greatest_increase:,}') + ")" + "\nGreatest Decrease in Profits: "+ f'{greatest_decrease_date}'+ " (" + (f'${greatest_decrease:,}') + ")")
