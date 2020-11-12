@@ -55,4 +55,4 @@ print("Greatest Decrease in Profits: " + f'{greatest_decrease_date}',"(",(f'${gr
 #set file pate using write mode
 with open(output_file, 'w') as txtFile:
     #output results to .txt file
-    txtFile.write("Financial Analysis\n---------------------------------\nTotal Months: "+ f'{sum_month}'"\nTotal: " + f'${final_pltotal:,}' + "\nAverage Change: " + f'${avg_change:,}' + "\nGreatest Increase in Profits: "+ f'{greatest_date}'+ " (" + (f'${greatest_increase:,}') + ")" + "\nGreatest Decrease in Profits: "+ f'{greatest_decrease_date}'+ " (" + (f'${greatest_decrease:,}') + ")")
+    txtFile.write("Financial Analysis\n---------------------------------\nTotal Months: "+ f'{sum_month}'"\nTotal: " + f'${final_pltotal:,}' + "\nAverage Change: " + f'${round(avg_change, 2):,}' + "\nGreatest Increase in Profits: "+ f'{greatest_date}'+ " (" + (f'${greatest_increase:,}') + ")" + "\nGreatest Decrease in Profits: "+ f'{greatest_decrease_date}'+ " (" + (f'${greatest_decrease:,}') + ")")
